@@ -24,7 +24,7 @@ set $up k
 set $right l
 
 # Terminal is foot for now, might change to kitty?
-set $term foot
+set $termnal kitty
 
 # My launcher launches things
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -48,7 +48,7 @@ exec swayidle -w \
 #
 # 
 	# Spawn terminal!
-	bindsym $mod+Return exec $term
+	bindsym $mod+Return exec $terminal
 
 	# Close focused window
 	bindsym $mod+Shift+q kill
