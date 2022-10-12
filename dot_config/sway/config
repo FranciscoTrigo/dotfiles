@@ -173,7 +173,8 @@ bindsym $mod+r mode "resize"
 
 
 # styles - set the folder for your theme definition file
-set $theme /usr/share/sway/themes/matcha-green
+
+set $theme $HOME/.config/sway/srcery
 ## SOMEDAY I WILL HAVE A SRCERY THEME FOR THIS
 # theme variables
 include $theme/definitions
