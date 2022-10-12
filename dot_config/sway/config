@@ -1,0 +1,207 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+
+#Set scaling to 1.5 for laptop 1440p
+output eDP-1 scale 1.5
+
+# Bye bye Caps lock for my laptop
+input "type:keyboard" {
+xkb_options ctrl:nocaps
+}
+
+
+# Set up Windows key as power key
+set $mod Mod4
+
+# Move like its VIM 
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Terminal is foot for now, might change to kitty?
+set $term foot
+
+# My launcher launches things
+#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+# Set wallpaper below
+ output * bg ~/onepiece.jpg fill
+# example
+# output [screen name] 
+# get screen names by doing: swaymsg -t get_outputs
+
+
+# Lets idle
+# Will lock after 300 secs, turn off screen after 600 secs, will also sleep?!
+exec swayidle -w \
+	timeout 300 'swaylock -f -c 000000' \
+	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+	before-sleep 'swaylock -f -c 000000'
+
+
+### Some keybinds
+#
+# 
+	# Spawn terminal!
+	bindsym $mod+Return exec $term
+
+	# Close focused window
+	bindsym $mod+Shift+q kill
+
+	# Launchy launch
+	bindsym $mod+d exec $menu
+
+	# Drag floating windows holding down $mod and left mouse button
+	# REsize with right mouse + $mod
+	floating_modifier $mod normal
+
+	# Reload config!!
+	bindsym $mod+Shift+r reload
+
+	# Exit SWAY
+	bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you want to leave?' -B 'Yea' 'swaymsg exit'
+
+######### Moveeeee
+
+	# Move where you focus
+	bindsym $mod+$left focus left
+	bindsym $mod+$right focus right
+	bindsym $mod+$down focus down
+	bindsym $mod+$up focus up
+	bindsym $mod+Left focus left
+	bindsym $mod+Right focus right
+	bindsym $mod+Up focus up
+	bindsym $mod+Down focus down
+
+	# Move the focused window
+	bindsym $mod+Shift+$left move left
+	bindsym $mod+Shift+$right move right
+	bindsym $mod+Shift+$down move down
+	bindsym $mod+Shift+$up move up
+	bindsym $mod+Shift+Left move left
+	bindsym $mod+Shift+Right move right
+	bindsym $mod+Shift+Down move down
+	bindsym $mod+Shift+Up move up
+
+
+##### Workspace
+
+	# Move to workspace
+	bindsym $mod+1 workspace number 1
+	bindsym $mod+2 workspace number 2
+	bindsym $mod+3 workspace number 3
+	bindsym $mod+4 workspace number 4
+	bindsym $mod+5 workspace number 5
+	bindsym $mod+6 workspace number 6
+
+	# change window to workspace
+	bindsym $mod+Shift+1 move container to workspace number 1
+	bindsym $mod+Shift+2 move container to workspace number 2
+	bindsym $mod+Shift+3 move container to workspace number 3
+	bindsym $mod+Shift+4 move container to workspace number 4
+	bindsym $mod+Shift+5 move container to workspace number 5
+	bindsym $mod+Shift+6 move container to workspace number 6
+
+
+
+
+### Scratch scratchpad fever!
+	
+	# Makes the focused window into scratchpad
+	bindsym $mod+Shift+minus move scratchpad
+	# Toggle scratchpad window
+	bindsym $mod+minus scratchpad show
+
+## Layout
+	
+	# Split
+	bindsym $mod+b splith
+	bindsym $mod+v splitv
+
+	# Change layout for the focused container
+	bindsym $mod+s layout stacking
+	bindsym $mod+w layout tabbed
+	bindsym $mod+e layout toggle split
+
+	# Fullscreen
+	bindsym $mod+Shift+f fullscreen
+
+	# Till It or Float IT
+	bindsym $mod+Shift+space floating toggle
+	# Toggle focus between floating world and tilling world
+	bindsym $mod+space focus mode_toggle
+
+	# Go to parent container
+	bindsym $mod+a focus parent
+
+## Reziseing
+	
+	mode "resize" {
+	bindsym $left resize shrink width 10px
+	bindsym Left resize shrink width 10px
+
+	bindsym $right resize grow width 10px
+	bindsym Right resize grow width 10px
+
+	bindsym $up resize shrink height 10px
+	bindsym Up resize shrink height 10px
+
+	bindsym $down resize grow height 10px
+	bindsym Down resize grow height 10px
+}
+bindsym $mod+r mode "resize"
+
+
+################33
+## Status Bar
+
+#bar {
+#	position top
+#	status_command while date +'%Y-%m-%d %I:%M:%S $p'; do sleep 1; done
+	
+#	colors {
+#		statusline #ffffff
+#		background #323232
+#		inactive_workspace #32323200 #32323200 #5c5c5c
+#	}
+#}
+
+
+# styles - set the folder for your theme definition file
+set $theme /usr/share/sway/themes/matcha-green
+## SOMEDAY I WILL HAVE A SRCERY THEME FOR THIS
+# theme variables
+include $theme/definitions
+#################
+
+
+
+###
+# global variables -- This has a lot of the defaults
+# include /etc/sway/definitions
+# I copied that default file and moved it to my home to modify it, no need to call the source one anymore..
+# user variables
+include $HOME/.config/sway/definitions
+#####
+
+## Looks like the below is needed for my input devices?! I'll just leave it there
+include /etc/sway/inputs/*
+include /etc/sway/outputs/*
+
+
+# enable modes
+include /etc/sway/modes/*
+
+# only enable this if every app you use is compatible with wayland
+# xwayland disable
+
+# include additional configs e.g. to autostart applications
+include /etc/sway/config.d/*
+
+# user config
+include $HOME/.config/sway/config.d/*.conf
