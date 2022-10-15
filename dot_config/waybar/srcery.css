@@ -1,0 +1,34 @@
+/*
+*
+* Srcery colors
+* YamiFrankc
+*
+*/
+
+
+
+
+
+@define-color black #1c1b19;
+@define-color bblack #918175;
+
+@define-color red #ef2f27;
+@define-color bred #f75341;
+
+@define-color green #519f50;
+@define-color bgreen #98bc37;
+
+@define-color yellow #fbb829;
+@define-color byellow #fed06e;
+
+@define-color blue #2c78bf;
+@define-color bblue #68a8e4;
+
+@define-color magenta #e02c6d;
+@define-color bmagenta #ff5c8f;
+
+@define-color cyan #0aaeb3;
+@define-color bcyan #2be4d0;
+
+@define-color white #baa67f;
+@define-color bwhite #fce8c3;
