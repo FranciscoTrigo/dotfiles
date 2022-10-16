@@ -46,7 +46,10 @@ exec swayidle -w \
 
 ### Some keybinds
 #
-# 
+#
+
+	# Run the poderosisimo emacs (only for org mode!)
+	bindsym $mod+z exec emacs 
 	# Spawn terminal!
 	bindsym $mod+Return exec $terminal
 
