@@ -7,3 +7,5 @@ alias ls="ls --color"
 alias tree="tree -C"
 
 set -gx EDITOR vim
+
+starship init fish | source
