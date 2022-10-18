@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 
-alias colorls="perl ~/scripts/old-script/colorls.pl
+alias colorls="perl ~/scripts/old-scripts/colorls.pl"
 alias superls="ls -la --color"
 alias ls="ls --color"
 alias tree="tree -C"
