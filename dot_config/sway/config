@@ -14,7 +14,7 @@ xkb_options ctrl:nocaps
 }
 
 
-# Set up Windows key as power key
+# Set up Windows key as the kwy of power
 set $mod Mod4
 
 # Move like its VIM 
@@ -24,7 +24,7 @@ set $up k
 set $right l
 
 # Terminal is foot for now, might change to kitty?
-set $termnal kitty
+set $terminal kitty
 
 # My launcher launches things
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -43,12 +43,16 @@ exec swayidle -w \
 	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 	before-sleep 'swaylock -f -c 000000'
 
+# Set apps where I like them
+assign [app_id="firefox"] workspace number 2
+assign [app_id="discord"] workspace number 3 
 
 ### Some keybinds
 #
 #
-
-	# Run the poderosisimo emacs (only for org mode!)
+	# Screnshot time!
+	bindsym $mod+y exec bash $HOME/scripts/swayScrenshot.sh 
+	# Run the poderosisimo emacs (mostly for org mode!)
 	bindsym $mod+z exec emacs 
 	# Spawn terminal!
 	bindsym $mod+Return exec $terminal
@@ -90,6 +94,8 @@ exec swayidle -w \
 	bindsym $mod+Shift+Right move right
 	bindsym $mod+Shift+Down move down
 	bindsym $mod+Shift+Up move up
+
+
 
 
 ##### Workspace
