@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 
-
+alias wifisetup="nmtui"
 alias colorls="perl ~/scripts/old-scripts/colorls.pl"
 alias superls="ls -la --color"
 alias ls="ls --color"
